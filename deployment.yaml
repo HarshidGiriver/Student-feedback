@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: student-feedback-deployment
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: student-feedback
+
+  template:
+    metadata:
+      labels:
+        app: student-feedback
+
+    spec:
+      containers:
+        - name: student-feedback-container
+
+          image: harshid2007/student-feedback:latest
+
+          ports:
+            - containerPort: 80
+
+          imagePullPolicy: Always
